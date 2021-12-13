@@ -1,0 +1,28 @@
+[
+{
+"id" : "1",
+"fName": "Ajay",
+"lName":"Divaraniya",
+"Number" : "9624591954",
+"mail" : "amdivaraniya@hops.healthcare",
+"city" : "Junagadh"
+},
+
+{
+    "id" : "2",
+    "fName": "Tejas",
+    "lName":"Patel",
+    "Number" : "8140602110",
+    "mail" : "tjpatel@hops.healthcare",
+    "city" : "Modasa"
+ },
+
+{
+        "id" : "3",
+        "fName": "Sonu",
+        "lName":"Chauhan",
+        "Number" : "7817903466",
+        "mail" : "sonuchauhan@hops.healthcare",
+        "city" : "Ahmedabad"
+ }
+]
