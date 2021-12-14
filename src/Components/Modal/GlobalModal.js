@@ -1,113 +1,124 @@
-import React,{Component} from "react";
-import {Modal , Button } from "react-bootstrap"
+import React, { Component } from "react";
+import { Modal, Button } from "react-bootstrap";
 
 
 
-// let fname,lName,mail,city,number,userIds
+let changedValues = [
+  {
+    id: "",
+    fName: "",
+    lName: "",
+    Number: "",
+    mail: "",
+    city: "",
+  },
+];
 
-let changedValues = [{
-    "id" : "",
-    "fName": "",
-    "lName":"",
-    "Number" : "",
-    "mail" : "",
-    "city" : ""
-}];
+export default class GlobalModal extends Component {
+  hideFunction = () => {};
 
+  submitFunction = (e) => {
+    e.preventDefault();
 
- 
-  
-export default class GlobalModal  extends Component {
-    constructor(props) {
-      super(props);
+    changedValues[0].id = this.props.userId;
+    changedValues[0].fName = e.target.fName.value;
+    changedValues[0].lName = e.target.lName.value;
+    changedValues[0].Number = e.target.number.value;
+    changedValues[0].mail = e.target.mail.value;
+    changedValues[0].city = e.target.city.value;
 
-    
-      this.state = {
-      
-      };
-    }
-  
+    this.props.editF(changedValues);
+    this.props.onHide(e);
+  };
 
+  render() {
+    return (
+      <>
+        <Modal
+          show={this.props.show}
+          onHide={this.props.onHide}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          closeVariant="white"
+        >
+          <form onSubmit={this.submitFunction}>
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              {this.props.modalTitle}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body   className="d-flex flex-column " >
+            <div className="d-flex flex-column flex-lg-row  justify-content-between w-50 m-3 " >
 
+              <h5>First Name</h5>
+              <input
+                type="text"
+                placeholder="Enter Your First Name"
+                defaultValue={this.props.fName}
+                required
+                name="fName"
+              />
 
+              </div>
+              <div className="d-flex flex-column flex-lg-row justify-content-between w-50 m-3">
 
-submitFunction=(e)=>{
-    e.preventDefault()
+              <h5>Last Name</h5>
+              <input
+                type="text"
+                placeholder="Enter Your Last Name"
+                defaultValue={this.props.lName}
+                required
+                name="lName"
+              />
+              </div>
+              <div className="d-flex flex-column flex-lg-row justify-content-between w-50 m-3">
 
+              <h5>Mail</h5>
+              <input
+                type="text"
+                placeholder="Enter Your Mail Id"
+                defaultValue={this.props.mail}
+                name="mail"
+              />
 
-        changedValues[0].id = this.props.userId
-        changedValues[0].fName = e.target.fName.value
-        changedValues[0].lName = e.target.lName.value
-        changedValues[0].Number = e.target.number.value
-        changedValues[0].mail = e.target.mail.value
-        changedValues[0].city = e.target.city.value
-    
-        // console.log(changedValues);
-  
-    
-    }
-  
-    render() {
-  
-      return (
+</div>
+<div className="d-flex flex-column flex-lg-row justify-content-between w-50 m-3">
+              <h5>Number</h5>
+              <input
+                type="text"
+                placeholder="Enter Your Number"
+                defaultValue={this.props.number}
+                required
+                name="number"
+              />
 
-        <>
-  
-           <Modal
-           show={this.props.show} onHide={this.props.onHide}
-      
-                 size="lg"
-                 aria-labelledby="contained-modal-title-vcenter"
-                 centered
-               >
-                 <Modal.Header closeButton >
-                   <Modal.Title id="contained-modal-title-vcenter">
-                    {this.props.modalTitle}
-                   </Modal.Title>
-                 </Modal.Header>
-                 <Modal.Body>
-                 <form  onSubmit={this.submitFunction} >
-                   <h4>{this.props.fName}</h4>
-                 <input type="text" placeholder={this.props.fName} name="fName"/>
-                 <h6>Last Name</h6>
-                 <input type="text" placeholder={this.props.lName}  name="lName"/>
-                 <h6>Mail</h6>
-                 <input type="text" placeholder={this.props.mail}   name="mail" />
-                 <h6>Number</h6>
-                 <input type="text" placeholder={this.props.number}  name="number" />
-                 <h6>City</h6>
-                 <input type="text" placeholder={this.props.city}   name="city"  />
-                 <Button class="btn-secondary" type="submit" onClick={this.props.onHide} >Add Data</Button>
-                 </form>
-                 </Modal.Body>
-                 <Modal.Footer>
-                
+</div>
+<div className="d-flex flex-column flex-lg-row justify-content-between w-50 m-3" >
 
-                   <Button class="btn-warning"  onClick={this.props.onHide}>Close</Button>
-                 </Modal.Footer>
-               </Modal>
-               </>
-      );
-    }
+              <h5>City</h5>
+              <input
+                type="text"
+                placeholder="Enter Your City"
+                defaultValue={this.props.city}
+                required
+                name="city"
+              />
+            
+            </div>   
+          </Modal.Body>
+          <Modal.Footer>
+          <Button class="btn-secondary" type="submit" variant="success">
+                {this.props.modalTitle}
+              </Button>
+            <Button class="btn-warning" onClick={this.props.onHide}>
+              Close
+            </Button>
+          </Modal.Footer>
+          </form>
+        </Modal>
+      </>
+    );
   }
-
-  export {changedValues}
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 

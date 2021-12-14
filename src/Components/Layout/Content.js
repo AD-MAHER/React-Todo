@@ -1,4 +1,5 @@
 import React from 'react'   
+
 import GlobalTable from '../Table Component/GlobalTable'
 
 export default function Content() {
@@ -7,6 +8,7 @@ export default function Content() {
             
            
            <div className='p-5'>
+
            <GlobalTable/>
            </div>
         </article>
